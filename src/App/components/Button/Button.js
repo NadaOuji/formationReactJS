@@ -17,7 +17,7 @@ const Button =(props) => {
 //'avantage de l'arrow function est de garder le contexte
 // mais dans ce cas de figure c'est la même chose que function
 
-Button.propsTypes={
+Button.propTypes={
     label: PropTypes.string.isRequired,
     CouleurDeFond: PropTypes.string,   // pts pour PropTypes.string
     taillePolice: PropTypes.number, // ptn pour PropTypes.number

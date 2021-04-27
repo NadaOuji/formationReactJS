@@ -1,21 +1,34 @@
+import React from 'react'
 import './App.css';
 import Button from './components/Button/Button';
 
-//const uneVar='Bonjour Paris';
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      counter:-1, 
+      lastClickedTime:null};
+  }
 
-function App() {
-  return (
-    <div className="App">
-     <Button label="Ok" lorsqueJeClickSurLeBoutton={(evt) => {
-       console.log("j\'ai ete clicke onc fais qqch stp !!");
-       alert('Button clicked!!!!'); // jamais utiliser alert ça bloque tout
-       console.log('L\'alert est fermée ');
-     }} 
-     style={{ textDecoration: 'underline', fontStyle: 'italic'}} />
-     <Button label="Cancel"  CouleurDeFond={'tomato'} taillePolice={24} lorsqueJeClickSurLeBoutton={(evt) => {}} />
-     <Button label="Don't know" CouleurDeFond="skyblue" lorsqueJeClickSurLeBoutton={(evt) => {}} />
-    </div>
-  );
+  componentDidMount(){
+    this.setState({counter:0})
+  }
+
+  render(){
+    return <div className="App">
+      <div>les boutons on ete clickés : {this.state.counter} fois <br/> 
+      {this.state.lastClickedTime && ' dernier click ' + this.state.lastClickedTime.toISOString()}</div>
+
+    <Button label = "add"  lorsqueJeClickSurLeBoutton={() => {
+        this.setState({counter:this.state.counter+1, lastClickedTime: new Date()});
+        console.log(this.state);
+    }} />
+    <Button label = "init"  couleurDeFond ="red" lorsqueJeClickSurLeBoutton={() => {
+    
+    }} />
+
+          </div>
+  }
 }
 
 export default App;
