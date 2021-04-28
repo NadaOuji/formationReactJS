@@ -2,3 +2,16 @@
     border: 1px solid black;
     padding: 20px;
 }
+
+.inlineConainer>*{
+    display: inline;;
+}
+.inlineConainer>input
+[type=number]{
+    width: 50px;
+}
+
+.textEditor{
+    border:1px solid
+    grey;
+}
