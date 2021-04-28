@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './MemeForm.module.css';
 import Button from '../Button/Button';
 
-export const initialState= {name:'',text:{x:0,y:0, bold:false, underline:false, color:'#000000'},image:''}
+export const initialState= {
+  name:'',
+  text:{x:0,y:0, bold:false, underline:false, color:'#000000'},
+  image:''}
 
 const MemeForm = (props) => {
 const [state, setstate] = useState(initialState);
