@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MemeViewer.module.scss';
+import { IMG_FOLDER } from '../../config/config';
 
 const MemeViewer = (props) => (
-  <svg className={styles.MemeViewer} data-testid="MemeViewer" viewBox={'0 0 1280 720'}>
+  <svg className={styles.MemeViewer} data-testid="MemeViewer" viewBox={
+    props.meme.width?
+    `0 0 ${props.meme.width} ${props.meme.height}`:
+    `0 0 1000 800`
+    }>
   
-    <image x={0} y={0} href={props.meme.image} />
+   {props.meme.image && <image x={0} y={0} href={IMG_FOLDER + props.meme.image.src} />}
     <text x={props.meme.text.x}
      y={props.meme.text.y}
     fill={props.meme.text.color}

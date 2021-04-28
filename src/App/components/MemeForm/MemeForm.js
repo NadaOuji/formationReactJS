@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 export const initialState= {
   name:'',
   text:{x:0,y:0, bold:false, underline:false, color:'#000000'},
-  image:''}
+  imageId:''}
 
 const MemeForm = (props) => {
 const [state, setstate] = useState(initialState);
@@ -17,11 +17,14 @@ return <form data-testid="MemeForm">
      setstate({...state,name:evt.target.value});
    }} /> <br/>
    <label htmlFor="meme-image">Image</label><br/>
-   <select id="meme-image" value={state.image} onChange={(evt) => {
-     setstate({...state,image: evt.target.value});
+   <select id="meme-image" value={state.imageId} onChange={(evt) => {
+     setstate({...state,imageId: Number(evt.target.value)});
    }} > 
-   <option value="img/empty.jpg">empty</option>
-     <option value="img/5element.jpg">5eme element</option>
+{
+   props.images.map((e,i) => <option key={'option-image-'+i} value={e.id}>{e.nom}</option>)
+}
+   {/* <option value="img/empty.jpg">empty</option>
+   <option value="img/5element.jpg">5eme element</option> */}
    </select>
    <div className={styles.textEditor} >
      <label htmlFor="meme-text">Text</label><br/>
@@ -63,7 +66,9 @@ return <form data-testid="MemeForm">
 </form>
 }
 
-MemeForm.propTypes = {onSubmit:PropTypes.func.isRequired};
+MemeForm.propTypes = {
+  onSubmit:PropTypes.func.isRequired,
+   images:PropTypes.array.isRequired,};
 
 MemeForm.defaultProps = {};
 
