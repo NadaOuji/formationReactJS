@@ -1,0 +1,52 @@
+{
+  "images": [
+    {
+      "id": 0,
+      "nom": "Wonder Women",
+      "src": "5element.jpg",
+      "height": 720,
+      "width": 1280
+    }
+  ],
+  "memes": [
+    {
+      "id": 0,
+      "nom": "hyperGreen",
+      "text": {
+        "x": 400,
+        "y": 500,
+        "value": "hyper green !!",
+        "color": "#00AF00",
+        "bold": false,
+        "underline": true
+      },
+      "imageId": 0
+    },
+    {
+      "id": 1,
+      "nom": "hyperGreen",
+      "text": {
+        "x": 400,
+        "y": 500,
+        "value": "hyper green !!",
+        "color": "#00AF00",
+        "bold": false,
+        "underline": true
+      },
+      "imageId": 0
+    },
+    {
+      "id": 3,
+      "nom": "SuperVert",
+      "text": {
+        "x": 400,
+        "y": 500,
+        "value": "super vert !!",
+        "color": "#00AF00",
+        "bold": true,
+        "underline": false
+      },
+      "imageId": 0
+    }
+  ]
+}
