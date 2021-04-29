@@ -1,3 +1,4 @@
+import { useParams } from 'react-router';
 import {createStore} from 'redux';
 import { REST_ADR, REST_ENDPOINT } from '../config/config';
 
@@ -16,7 +17,8 @@ export const REDUCER_ACTIONS= Object.seal({
     ADD_MEME:'ADD_MEME',
     ADD_MEMES:'ADD_MEMES',
     SET_CURRENT:'SET_CURRENT',
-    CLEAR_CURRENT:'CLEAR_CURRENT'
+    CLEAR_CURRENT:'CLEAR_CURRENT',
+    SET_CURRENT_MEME_ID:'SET_CURRENT_MEME_ID'
     
 });
 const PRIVATE_REDUCER_ACTIONS= Object.seal({
@@ -46,6 +48,9 @@ function reducer(state=initialState,action){
     case REDUCER_ACTIONS.ADD_IMAGES:return {...state,images:[...state.images,...action.values]};
     case REDUCER_ACTIONS.SET_CURRENT:return {...state, currentMeme: action.value };
     case REDUCER_ACTIONS.CLEAR_CURRENT:return {...state, currentMeme: initialState.currentMeme };
+    case REDUCER_ACTIONS.SET_CURRENT_MEME_ID:
+        const meme=  state.memes.find(e=>e.id === action.value)
+        return {...state, currentMeme: meme?meme:initialState.currentMeme };
 
     default: return state;
 }

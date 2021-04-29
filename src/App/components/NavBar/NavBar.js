@@ -3,24 +3,23 @@ import PropTypes from 'prop-types';
 import styles from './NavBar.module.scss';
 import { Nav, Navbar } from 'react-bootstrap';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import {LinkContainer} from 'react-router-bootstrap';
 const NavBar = () => (
   <Navbar bg="dark" variant="dark">
     <Navbar.Brand href="#home">
   Meme generator
 </Navbar.Brand>
 <Nav
-  activeKey="/thumnnail"
-  onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+  activeKey="/thumbnail"
+  onSelect={(selectedKey) => console.log(`selected ${selectedKey}`)}
 >
-  <Nav.Item>
-    <Nav.Link href="/home">Active</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link eventKey="/thumnnail">Thumbnail</Nav.Link>
-  </Nav.Item>
-  <Nav.Item>
-    <Nav.Link eventKey="/editor">Nouveau meme</Nav.Link>
-  </Nav.Item>
+  <LinkContainer to="/thumbnail">
+  <Nav.Link>Thumbnail</Nav.Link>
+  </LinkContainer>
+
+  <LinkContainer to="/editor">
+  <Nav.Link>Nouveau meme</Nav.Link>
+ </LinkContainer>
 </Nav>
   </Navbar>
 );
