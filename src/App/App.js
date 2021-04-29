@@ -7,6 +7,7 @@ import {initialState as CurrentMemeInitialState} from './components/MemeForm/Mem
 import FlexGrowLayout from './components/FlexGrowLayout/FlexGrowLayout';
 import {REST_ADR, REST_ENDPOINT} from './config/config'
 import Thumbnail from './components/Thumbnail/Thumbnail';
+import NavBar from './components/NavBar/NavBar';
 
 class App extends React.Component{
   constructor(props){
@@ -29,6 +30,7 @@ class App extends React.Component{
 
   render(){
     return <div className="App">
+      <NavBar/>
       <Thumbnail images= {this.state.images}/>
       {/* <FlexGrowLayout>
       <MemeViewer meme={{...this.state.currentMeme,
