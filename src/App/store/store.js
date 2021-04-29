@@ -7,8 +7,6 @@ const REDUCER_ACTIONS= Object.seal({
     ADD_MEME:'ADD_MEME',
     ADD_MEMES:'ADD_MEMES',
 });
- 
-// le reducer retourne toujours un etat : par defaut c'est l'état par défaut
 
 function reducer(state=initialState,action){
 switch(action.type){
@@ -21,10 +19,17 @@ switch(action.type){
 }
 }
 
-// let state = reducer(undefined,{type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'dss'}});
-// console.log(state);
-// state = reducer(state,{type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'dss'}});
-// console.log(state);
-// state = reducer(state,{type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'dss'}});
-// console.log(state);
-// le store gerre setetat pour avertir tout les gens des magazins c'est a nous de dire qu'il faut avertir mais redux ( le magasin, le gestionnaire de store)
+// reducer : liste de taches a mettre en place
+//store c'est notre magasin
+const store=createStore(reducer);
+store.subscribe(()=>{
+    console.log(store.getState());
+});
+
+store.dispatch({type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'sdzedzedz'}});
+store.dispatch({type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'azert'}});
+store.dispatch({type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'tyuiuiu'}});
+store.dispatch({type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'uoioi'}});
+store.dispatch({type:REDUCER_ACTIONS.ADD_IMAGE,value:{src:'sdfdgg'}});
+
+export default store;

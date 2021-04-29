@@ -8,7 +8,7 @@ import FlexGrowLayout from './components/FlexGrowLayout/FlexGrowLayout';
 import {REST_ADR, REST_ENDPOINT} from './config/config'
 import Thumbnail from './components/Thumbnail/Thumbnail';
 import NavBar from './components/NavBar/NavBar';
-
+import store from './store/store';
 class App extends React.Component{
   constructor(props){
     super(props);
