@@ -1,15 +1,17 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './MemeForm.module.css';
 import Button from '../Button/Button';
-
-export const initialState= {
-  name:'',
-  text:{x:0,y:0, bold:false, underline:false, color:'#000000'},
-  imageId:''}
-
+import store, {initialState, REDUCER_ACTIONS} from '../../store/store';
 const MemeForm = (props) => {
-const [state, setstate] = useState(initialState);
+const [state, setstate] = useState(initialState.currentMeme);
+const [images, setimages] = useState(initialState.images);
+
+useEffect(() => {
+  store.subscribe(() => {
+    setimages(store.getState().images)
+  })
+}, []);
 return <form data-testid="MemeForm">
   <h1>Meme Editor</h1>
   <label htmlFor="meme-name">Nom du meme</label><br/>
@@ -21,7 +23,7 @@ return <form data-testid="MemeForm">
      setstate({...state,imageId: Number(evt.target.value)});
    }} > 
 {
-   props.images.map((e,i) => <option key={'option-image-'+i} value={e.id}>{e.nom}</option>)
+   images.map((e,i) => <option key={'option-image-'+i} value={e.id}>{e.nom}</option>)
 }
    {/* <option value="img/empty.jpg">empty</option>
    <option value="img/5element.jpg">5eme element</option> */}
@@ -54,10 +56,11 @@ return <form data-testid="MemeForm">
 
      <div style={{margin:'20px 0px'}}>
        <Button label="cancel"CouleurDeFond="tomato" lorsqueJeClickSurLeBoutton={() => {
-         setstate(initialState)
+         setstate(initialState.currentMeme);
+         store.dispatch({type:REDUCER_ACTIONS.CLEAR_CURRENT});
        }} />
        <Button label="save"CouleurDeFond="skyblue" lorsqueJeClickSurLeBoutton={() => {
-         props.onSubmit(state)
+         store.dispatch({type:REDUCER_ACTIONS.SET_CURRENT,value:state});
        }} />
        
      </div>
@@ -66,9 +69,7 @@ return <form data-testid="MemeForm">
 </form>
 }
 
-MemeForm.propTypes = {
-  onSubmit:PropTypes.func.isRequired,
-   images:PropTypes.array.isRequired,};
+MemeForm.propTypes = {};
 
 MemeForm.defaultProps = {};
 
