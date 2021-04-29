@@ -6,6 +6,7 @@ import MemeViewer from './components/MemeViewer/MemeViewer';
 import {initialState as CurrentMemeInitialState} from './components/MemeForm/MemeForm';
 import FlexGrowLayout from './components/FlexGrowLayout/FlexGrowLayout';
 import {REST_ADR, REST_ENDPOINT} from './config/config'
+import Thumbnail from './components/Thumbnail/Thumbnail';
 
 class App extends React.Component{
   constructor(props){
@@ -28,7 +29,8 @@ class App extends React.Component{
 
   render(){
     return <div className="App">
-      <FlexGrowLayout>
+      <Thumbnail images= {this.state.images}/>
+      {/* <FlexGrowLayout>
       <MemeViewer meme={{...this.state.currentMeme,
         image:this.state.images.find(elem =>elem.id === this.state.currentMeme.imageId)}} />
       <MemeForm images={this.state.images} onSubmit={(valeurDuMeme) => {
@@ -36,7 +38,7 @@ class App extends React.Component{
         console.log(valeurDuMeme);
         this.setState({currentMeme:valeurDuMeme});
       }} />
-      </FlexGrowLayout>
+      </FlexGrowLayout> */}
 
       </div>
   }
